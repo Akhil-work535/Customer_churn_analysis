@@ -1,102 +1,104 @@
-# Customer Churn Prediction for Subscription Services
-In subscription-based businesses, retaining customers is crucial for sustainable growth. This project aims to analyze customer behavior, service usage patterns, and demographic factors to predict which customers are at risk of churning. By leveraging machine learning techniques, the model helps identify potential churners early, enabling targeted retention strategies, reducing revenue loss, and improving overall customer satisfaction.
+#  Customer Churn Analysis & Prediction
 
-## Business Problem
-Subscription-based companies often face customer churn — the loss of customers over time.  
-The marketing team currently uses a blanket retention approach, leading to unnecessary discounts for loyal customers and missed opportunities to retain at-risk users.
+##  Business Problem
+Subscription-based businesses lose significant revenue due to customer churn.  
+The challenge is not just predicting churn, but identifying at-risk customers early so retention strategies can be applied effectively.
 
-**Goal:** Build a predictive model to identify customers likely to churn so the company can focus retention efforts effectively.
+This project focuses on:
+- Understanding why customers churn
+- Building models that prioritize recall for churned customers
+- Translating model results into business-actionable insights
 
+##  Objective
+- Analyze customer behavior to identify churn drivers  
+- Build and evaluate machine learning models for churn prediction  
+- Improve churn class recall, not just overall accuracy  
+- Provide insights that can help reduce customer loss  
 
-## Business Objectives
-1. Analyze customer demographics and service usage to identify churn drivers.  
-2. Develop a predictive model to classify customers as "Churn" or "Non-Churn".  
-3. Determine key factors influencing churn.  
-4. Visualize results for business decision-making.
+##  Dataset
+- Source: Telco Customer Churn dataset (Kaggle)
+- Size: ~7,000 customers
+- Target Variable: Churn (Yes / No)
+- Key Features:
+  - Contract type
+  - Monthly charges
+  - Tenure
+  - Payment method
+  - Internet & service subscriptions
 
+##  Key Challenges Identified
+| Challenge | Why It Matters |
+|---------|----------------|
+| Class imbalance | Churned customers were a minority → accuracy was misleading |
+| Low churn recall | Many churned customers were missed by baseline models |
+| Feature dominance | Contract type & tenure heavily influenced predictions |
 
+##  Approach & Solutions
 
-##  Dataset Overview
-**Source:** [Kaggle – Telco Customer Churn Dataset](https://www.kaggle.com/blastchar/telco-customer-churn)  
-**Rows:** ~7,000  
-**Target Variable:** `Churn` (Yes/No)
+### 1️⃣ Data Preprocessing
+- Removed irrelevant identifiers
+- Handled missing values
+- Encoded categorical variables
+- Scaled numerical features
 
-| Feature | Description |
-|----------|-------------|
-| Tenure | Number of months customer stayed |
-| MonthlyCharges | Monthly amount billed |
-| TotalCharges | Lifetime total billed |
-| Contract | Contract type (Month-to-Month / One-Year / Two-Year) |
-| PaymentMethod | Payment method type |
+### 2️⃣ Exploratory Data Analysis (EDA)
+Key findings:
+- Month-to-month customers churn significantly more
+- Higher monthly charges correlate with higher churn
+- Long-tenure customers are more loyal
 
+##  Modeling & Evaluation
 
-## Data Cleaning & Preprocessing
-- Converted `TotalCharges` to numeric and filled missing values.  
-- Encoded categorical variables using LabelEncoder.  
-- Created `AvgMonthlySpend = TotalCharges / (Tenure + 1)`.  
-- Scaled numeric features using `StandardScaler`.
+### Models Trained
+- Logistic Regression
+- Random Forest
+- Gradient Boosting
+- Random Forest + SMOTE
 
+###  Why Accuracy Was Not Enough
+Because churn is imbalanced, accuracy alone falsely favored non-churn predictions.  
+Recall for churned customers was chosen as the primary metric.
 
-## Workflow
+##  Model Performance 
 
-```mermaid
-flowchart LR
-    A[Raw Data] --> B[Cleaning & Encoding]
-    B --> C[EDA]
-    C --> D[Model Training]
-    D --> E[Evaluation]
-    E --> F[Feature Importance]
-    F --> G[Power BI Dashboard]
+| Model | Recall (Churn) | Key Insight |
+|------|---------------|------------|
+| Logistic Regression | Low | Struggled with imbalance |
+| Random Forest | Moderate | Better non-linear learning |
+| Gradient Boosting | Improved | Captured complex patterns |
+| Random Forest + SMOTE | Best | Significantly improved churn detection |
 
+##  Business Impact
+- Higher churn recall → more customers flagged before leaving
+- Enables targeted retention strategies:
+  - Discounts for month-to-month users
+  - Incentives for high-charge customers
+  - Long-term contract promotions
 
-```
+##  Visualization & Dashboard
+An interactive Power BI dashboard was created to:
+- Track churn trends
+- Compare customer segments
+- Support non-technical stakeholders
 
+##  Tools & Technologies
+- Python: pandas, numpy, scikit-learn, matplotlib, seaborn
+- ML Techniques: SMOTE, Random Forest, Gradient Boosting
+- Visualization: Power BI
+- Environment: Jupyter Notebook
 
-## Modeling & evaluation:
- 
-| Model | Accuracy | Recall | Precision | F1 | ROC-AUC |
-|--------|-----------|----------|------------|-----------|---------|
-| Logistic Regression | 0.74 | 0.79 | 0.51 | 0.61 | 0.84 |
-| Random Forest | 0.78 | 0.50 | 0.62 | 0.55 | 0.82 |
-| Gradient Boosting | 0.79 | 0.49 | 0.65 | 0.56 | 0.83 |
-| RF + SMOTE | 0.76 | 0.74 | 0.53 | 0.62 | 0.84 |
+##  Key Takeaways
+- Metric selection is critical in imbalanced problems
+- Improving recall can be more valuable than improving accuracy
+- Domain understanding combined with ML leads to better business outcomes
 
+##  Future Improvements
+- Hyperparameter tuning with cross-validation
+- Cost-sensitive learning
+- Model explainability using SHAP
+- Deployment as a web application or API
 
-
-## Power BI Dashboard Highlights
-
-* Churn rate by contract type
-
-* Payment method vs churn
-
-* Monthly revenue vs tenure
-
-* Feature importance summary
-
-
-## Key Business Insights
-
-* Month-to-month customers are 3x more likely to churn.
-
-* Electronic check payments have highest churn correlation.
-
-* Long-term contracts improve retention by ~15%.
-  
-* Targeted offers can reduce churn by 10–15%.
-
-
-## Tech Stack
-
-Python | pandas | numpy | scikit-learn | seaborn | matplotlib | Power BI
-
-## Business Analytics Extension
-
-* RFM segmentation for customer value tiers.
-
-* Funnel analysis of churn stages.
-
-* KPI cards for retention and revenue loss.
-
- ## Conclusion
-
-The model provides actionable churn predictions, enabling marketing teams to target high-risk customers effectively and increase retention.
+## 👤 Author
+Akhil  
+Aspiring Data Analyst  
+linkedin: http://www.linkedin.com/in/vankayalapati-akhil
