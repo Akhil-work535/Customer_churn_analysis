@@ -1,4 +1,4 @@
-#  Customer Churn Analysis & Prediction
+#  Customer Churn Analysis 
 
 ##  Business Problem
 Subscription-based businesses lose significant revenue due to customer churn.  
