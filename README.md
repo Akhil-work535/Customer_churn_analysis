@@ -80,6 +80,9 @@ An interactive Power BI dashboard was created to:
 - Track churn trends
 - Compare customer segments
 - Support non-technical stakeholders
+- Performed churn segmentation and KPI calculations using MySQL
+- Wrote SQL queries to analyze churn by contract type, tenure, and services
+- Built an Excel dashboard with churn KPIs and visual summaries
 
 ## 🧰 Tools & Technologies
 - Python: pandas, numpy, scikit-learn, matplotlib, seaborn
