@@ -106,4 +106,4 @@ An interactive Power BI dashboard was created to:
 ## 👤 Author
 Akhil  
 Aspiring Data Analyst  
-linkedin: http://www.linkedin.com/in/vankayalapati-akhil
+🔗 [LinkedIn](http://www.linkedin.com/in/vankayalapati-akhil)
